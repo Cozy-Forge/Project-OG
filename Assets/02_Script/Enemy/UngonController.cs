@@ -14,32 +14,23 @@ public enum UngonState
 
 public class UngonController : FSM_Controller<UngonState>
 {
-    [SerializeField] UngonDataSO _data;
+    [field: SerializeField] public UngonDataSO enemyData { get; protected set; }
 
     protected override void Awake()
     {
-        _data = Instantiate(_data);
+        var idleState = new EnemyRootState(this);
+        //idle에서 jump 가는걸 만들어야 함
+
+        //그걸 AddTransition 해줘야 함.
+
+        var jumpState = new UngonJumpState(this);
+        //Jump에서 idle 가는걸 만들어야 함
+
+        //그걸 AddTransition 해줘야 함.
+
+        AddState(idleState, UngonState.Idle);
+        AddState(jumpState, UngonState.Jump);
+
     }
 }
 
-public class UngonIdleState<T> : FSM_State<T> where T : System.Enum
-{
-    public UngonIdleState(FSM_Controller<T> controller, EnemyDataSO data) : base(controller)
-    {
-
-    }
-
-    protected override void UpdateState()
-    {
-
-    }
-}
-
-
-public class UngonMoveState<T> : FSM_State<T> where T : System.Enum
-{
-    public UngonMoveState(T idleState, FSM_Controller<T> controller, EnemyDataSO data) : base(controller)
-    {
-        _idleState = idleState;
-    }
-}
