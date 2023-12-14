@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7b5d9e1f0f402942a5bfdfcaeeb7d90, type: 3}
-  m_Name: UngonSO
+  m_Name: UngonData
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 0
   <AttackPower>k__BackingField: 0
@@ -20,10 +20,10 @@ MonoBehaviour:
   <TargetAbleLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 0
-  <JumpRange>k__BackingField: 0
-  <JumpPower>k__BackingField: 0
-  <JumpDuration>k__BackingField: 0
-  <JumpCoolDown>k__BackingField: 0
+  <JumpRange>k__BackingField: 10
+  <JumpPower>k__BackingField: 4
+  <JumpDuration>k__BackingField: 1
+  <JumpCoolDown>k__BackingField: 3
   <LandBulletCount>k__BackingField: 0
   <FireCoolDown>k__BackingField: 0
   <FireRange>k__BackingField: 0
