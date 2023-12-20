@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 293171517}
-  - component: {fileID: 293171515}
   - component: {fileID: 293171518}
   m_Layer: 0
   m_Name: Map
@@ -141,25 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &293171515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293171514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87deb63b4c0158f46a339de271b8ab95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapSize: {x: 64, y: 40}
-  minimumDevideRate: 0.4
-  maximumDevideRate: 0.6
-  line: {fileID: 1499415532982306529, guid: c66d2f6dffdb13448ba57fc6d09e5978, type: 3}
-  map: {fileID: 4634822517577066464, guid: 58094a4497f42694fb991f3981880bc2, type: 3}
-  maximumDepth: 4
-  roomLine: {fileID: 4997872080597106966, guid: 82ba7b337f63ec440a14ede8f1ea32d6, type: 3}
 --- !u!4 &293171517
 Transform:
   m_ObjectHideFlags: 0
@@ -184,20 +164,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 293171514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d679a8c8b6b84b14ba76d7e9aedcbcee, type: 3}
+  m_Script: {fileID: 11500000, guid: 87deb63b4c0158f46a339de271b8ab95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: {x: 64, y: 40}
+  mapSize: {x: 100, y: 60}
   minimumDevideRate: 0.4
-  maximumDevideRate: 0.6
+  maximumDivideRate: 0.6
   line: {fileID: 1499415532982306529, guid: c66d2f6dffdb13448ba57fc6d09e5978, type: 3}
   map: {fileID: 4634822517577066464, guid: 58094a4497f42694fb991f3981880bc2, type: 3}
-  maximumDepth: 4
   roomLine: {fileID: 4997872080597106966, guid: 82ba7b337f63ec440a14ede8f1ea32d6, type: 3}
+  maximumDepth: 4
   tileMap: {fileID: 779993288}
-  roomTile: {fileID: 0}
-  wallTile: {fileID: 0}
-  outTile: {fileID: 0}
+  roomTile: {fileID: 11400000, guid: b7b4d2a127b8929468f50145c38529c3, type: 2}
+  wallTile: {fileID: 11400000, guid: 44fd0796a29ddea4c8b71b6a28b1ca84, type: 2}
+  outTile: {fileID: 11400000, guid: d94bd9f9b6fb96843aabc0c0bfca5d2a, type: 2}
 --- !u!1 &331264358
 GameObject:
   m_ObjectHideFlags: 0
