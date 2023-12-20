@@ -8,15 +8,16 @@ using Random = UnityEngine.Random;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] Vector2Int mapSize; //원하는 맵의 크기
+    [SerializeField] protected Vector2Int mapSize; //원하는 맵의 크기
     [SerializeField] float minimumDevideRate; //공간이 나눠지는 최소 비율
     [SerializeField] float maximumDevideRate; //공간이 나눠지는 최대 비율
     [SerializeField] private GameObject line; //lineRenderer를 사용하여 공간이 나눠진걸 시작할 때 보여주기 위함
     [SerializeField] private GameObject map; // lineRenderer를 사용해서 첫 맵의 사이즈를 보여주기 위함
     [SerializeField] private int maximumDepth; //트리의 높이 높을 수록 방을 더 자세히 나누게 됨
     [SerializeField] private GameObject roomLine; //lineRenderer를 사용하서 방의 사이즈를 보여주기 위함
+    
 
-    private void Start()
+    protected virtual void Start()
     {
         MapNode root = new MapNode(new RectInt(0, 0, mapSize.x, mapSize.y));//전체 맵 크기의 루트노드를 만듬
         DrawMap(0, 0);
@@ -123,4 +124,6 @@ public class MapGenerator : MonoBehaviour
         GenerateLoad(tree.leftNode, n + 1); //자식 노드들도 탐색
         GenerateLoad(tree.rightNode, n + 1);
     }
+
+    
 }

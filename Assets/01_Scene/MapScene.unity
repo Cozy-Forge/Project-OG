@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 293171517}
   - component: {fileID: 293171515}
+  - component: {fileID: 293171518}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -174,6 +175,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293171518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293171514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d679a8c8b6b84b14ba76d7e9aedcbcee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapSize: {x: 64, y: 40}
+  minimumDevideRate: 0.4
+  maximumDevideRate: 0.6
+  line: {fileID: 1499415532982306529, guid: c66d2f6dffdb13448ba57fc6d09e5978, type: 3}
+  map: {fileID: 4634822517577066464, guid: 58094a4497f42694fb991f3981880bc2, type: 3}
+  maximumDepth: 4
+  roomLine: {fileID: 4997872080597106966, guid: 82ba7b337f63ec440a14ede8f1ea32d6, type: 3}
+  tileMap: {fileID: 779993288}
+  roomTile: {fileID: 0}
+  wallTile: {fileID: 0}
+  outTile: {fileID: 0}
 --- !u!1 &331264358
 GameObject:
   m_ObjectHideFlags: 0
