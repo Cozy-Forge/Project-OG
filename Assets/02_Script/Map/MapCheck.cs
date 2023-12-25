@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+public enum OpenClose
+{
+    Left,
+    Right,
+    Up,
+    Down
+
+}
+
+
 public class MapCheck : MonoBehaviour
 {
     [SerializeField] private GameObject Lload;
@@ -14,34 +24,56 @@ public class MapCheck : MonoBehaviour
     [SerializeField] private GameObject Download;
     [SerializeField] private GameObject DownWall;
 
+    public Rect rt { get; private set; }
+
     private Tilemap tilemap;
+
+    private void Awake()
+    {
+        rt = new Rect(transform.position.x - (33 / 2), transform.position.y - (26 / 2), 33, 26);
+    }
 
     private void Start()
     {
-        // Get the Tilemap component from the current GameObject
         tilemap = GetComponent<Tilemap>();
-
-        CheckRightMap();
     }
 
-    private void CheckRightMap()
+    public void CheckRightMap(OpenClose openClose)
     {
-        Vector3Int currentPosition = new Vector3Int((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
-        Vector3Int rightPosition = currentPosition + new Vector3Int(33, 0, 0); // Check the tile to the right
-
-        TileBase rightTile = tilemap.GetTile(rightPosition);
-
-        // If there's a tile to the right, deactivate Road and activate RWall
-        if (rightTile != null)
+        switch (openClose)
         {
-            Rload.SetActive(false);
-            RWall.SetActive(true);
-        }
-        // If there's no tile to the right, activate Road and deactivate RWall
-        else
-        {
-            Rload.SetActive(true);
-            RWall.SetActive(false);
+            case OpenClose.Up:
+                Upload.SetActive(false);
+                UpWall.SetActive(true);
+                break;
+            case OpenClose.Right:
+                Rload.SetActive(false);
+                RWall.SetActive(true);
+                break;
+            case OpenClose.Left:
+                Lload.SetActive(false);
+                LWall.SetActive(true);
+                break;
+            case OpenClose.Down:
+                Download.SetActive(false);
+                DownWall.SetActive(true);
+                break;
+            default:
+                break;
         }
     }
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+
+        var old = Gizmos.color;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, new Vector3(33, 26));
+        Gizmos.color=old;
+    }
+
+#endif
+
 }

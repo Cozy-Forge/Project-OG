@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject MainTile;
+    [SerializeField] private MapCheck MainTile;
     [SerializeField] protected Vector3 MainMapSize;
     [SerializeField] private int MapCount;
 
+    [SerializeField] private List<MapCheck> Checks = new List<MapCheck>();
     private List<Vector3> mapPositions = new List<Vector3>();
     private Vector3 currentMapPosition;
 
     private void Start()
     {
-        Instantiate(MainTile, new Vector2(0,0), Quaternion.identity, transform);
+        Checks.Add(Instantiate(MainTile, new Vector2(0,0), Quaternion.identity, transform));
         currentMapPosition = Vector3.zero;
         GenerateMapChain(MapCount);
+    }
+
+    private void ConnectRoad()
+    {
+        foreach(var map in Checks)
+        {
+            if(Checks.Find(x => x.rt.Contains(map.transform.right * 33) && x != map))
+            {
+                map.CheckRightMap(OpenClose.Right);
+                Debug.Log(map.gameObject);
+            }
+        }
+
     }
 
     private void GenerateMapChain(int numberOfMaps)
@@ -24,10 +38,11 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < numberOfMaps; i++)
         {
             Vector3 nextPosition = GetNextValidPosition();
-            Instantiate(MainTile, nextPosition, Quaternion.identity, transform);
+            Checks.Add(Instantiate(MainTile, nextPosition, Quaternion.identity, transform));
             mapPositions.Add(nextPosition);
             currentMapPosition = nextPosition;
         }
+        ConnectRoad();
     }
 
     private Vector3 GetNextValidPosition()
