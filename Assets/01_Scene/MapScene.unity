@@ -167,9 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87deb63b4c0158f46a339de271b8ab95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainTile: {fileID: 181497504938650454, guid: 91d661a272732454eb22fc36b476ac5d, type: 3}
+  MainTile: {fileID: 8902457196742562288, guid: 91d661a272732454eb22fc36b476ac5d, type: 3}
   MainMapSize: {x: 33, y: 26, z: 0}
   MapCount: 100
+  Checks: []
 --- !u!1 &1235443485
 GameObject:
   m_ObjectHideFlags: 0
