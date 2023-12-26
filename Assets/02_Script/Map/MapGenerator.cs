@@ -5,7 +5,6 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] private MapCheck MainTile;
-    [SerializeField] protected Vector3 MainMapSize;
     [SerializeField] private int MapCount;
 
     [SerializeField] private List<MapCheck> Checks = new List<MapCheck>();
@@ -28,22 +27,22 @@ public class MapGenerator : MonoBehaviour
             Debug.Log(map.transform.right);
 
             ///
-            if(Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.right * MainMapSize.x / 1.5f)) && x != map) == null)
+            if(Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.right * MainTile.MapSize.x / 1.5f)) && x != map) == null)
             {
                 map.CheckRightMap(OpenClose.Right);
                 Debug.Log(map.gameObject);
             }
-            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.up * MainMapSize.y / 1.5f)) && x != map) == null)
+            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.up * MainTile.MapSize.y / 1.5f)) && x != map) == null)
             {
                 map.CheckRightMap(OpenClose.Up);
                 Debug.Log(map.gameObject);
             }
-            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.down * MainMapSize.y / 1.5f)) && x != map) == null)
+            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.down * MainTile.MapSize.y / 1.5f)) && x != map) == null)
             {
                 map.CheckRightMap(OpenClose.Down);
                 Debug.Log(map.gameObject);
             }
-            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.left * MainMapSize.x / 1.5f)) && x != map) == null)
+            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.left * MainTile.MapSize.x / 1.5f)) && x != map) == null)
             {
                 map.CheckRightMap(OpenClose.Left);
                 Debug.Log(map.gameObject);
@@ -75,10 +74,10 @@ public class MapGenerator : MonoBehaviour
 
         foreach (Vector3 position in mapPositions)
         {
-            Vector3 right = position + new Vector3(MainMapSize.x, 0, 0);
-            Vector3 left = position - new Vector3(MainMapSize.x, 0, 0);
-            Vector3 up = position + new Vector3(0, MainMapSize.y, 0);
-            Vector3 down = position - new Vector3(0, MainMapSize.y, 0);
+            Vector3 right = position + new Vector3(MainTile.MapSize.x, 0, 0);
+            Vector3 left = position - new Vector3(MainTile.MapSize.x, 0, 0);
+            Vector3 up = position + new Vector3(0, MainTile.MapSize.y, 0);
+            Vector3 down = position - new Vector3(0, MainTile.MapSize.y, 0);
 
             if (!mapPositions.Contains(right))
                 possiblePositions.Add(right);

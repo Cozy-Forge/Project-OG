@@ -6276,6 +6276,7 @@ MonoBehaviour:
   UpWall: {fileID: 5707627318013071479}
   Download: {fileID: 1739184120}
   DownWall: {fileID: 3164083622303271576}
+  <MapSize>k__BackingField: {x: 33, y: 26, z: 0}
 --- !u!1 &246509927554625283
 GameObject:
   m_ObjectHideFlags: 0

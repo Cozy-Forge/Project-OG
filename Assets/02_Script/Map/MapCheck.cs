@@ -24,6 +24,8 @@ public class MapCheck : MonoBehaviour
     [SerializeField] private GameObject Download;
     [SerializeField] private GameObject DownWall;
 
+    [field:SerializeField] public Vector3 MapSize { get; private set; }
+
     public Rect rt { get; private set; }
 
     private Tilemap tilemap;
