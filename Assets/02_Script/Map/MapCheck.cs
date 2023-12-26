@@ -40,6 +40,7 @@ public class MapCheck : MonoBehaviour
 
     public void CheckRightMap(OpenClose openClose)
     {
+
         switch (openClose)
         {
             case OpenClose.Up:

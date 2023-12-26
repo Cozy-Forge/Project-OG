@@ -21,13 +21,34 @@ public class MapGenerator : MonoBehaviour
 
     private void ConnectRoad()
     {
+
         foreach(var map in Checks)
         {
-            if(Checks.Find(x => x.rt.Contains(map.transform.right * 33) && x != map))
+
+            Debug.Log(map.transform.right);
+
+            ///
+            if(Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.right * MainMapSize.x / 1.5f)) && x != map) == null)
             {
                 map.CheckRightMap(OpenClose.Right);
                 Debug.Log(map.gameObject);
             }
+            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.up * MainMapSize.y / 1.5f)) && x != map) == null)
+            {
+                map.CheckRightMap(OpenClose.Up);
+                Debug.Log(map.gameObject);
+            }
+            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.down * MainMapSize.y / 1.5f)) && x != map) == null)
+            {
+                map.CheckRightMap(OpenClose.Down);
+                Debug.Log(map.gameObject);
+            }
+            if (Checks.Find(x => x.rt.Contains(map.transform.position + (Vector3.left * MainMapSize.x / 1.5f)) && x != map) == null)
+            {
+                map.CheckRightMap(OpenClose.Left);
+                Debug.Log(map.gameObject);
+            }
+
         }
 
     }
@@ -41,7 +62,10 @@ public class MapGenerator : MonoBehaviour
             Checks.Add(Instantiate(MainTile, nextPosition, Quaternion.identity, transform));
             mapPositions.Add(nextPosition);
             currentMapPosition = nextPosition;
+            Debug.Log(123);
         }
+
+
         ConnectRoad();
     }
 
