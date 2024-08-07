@@ -51,10 +51,11 @@ public class ItemExplain : MonoBehaviour
             Debug.LogError($"{transform}: Item Explain is multiply running!");
         }
 
-        inventoryActive = FindObjectOfType<InventoryActive>();
         _iconButtons = transform.Find("Icons").GetComponentsInChildren<IconButton>();
         _Title = transform.Find("TooltipPanel/Title").transform;
- 
+
+        inventoryActive = FindObjectOfType<InventoryActive>();
+        inventoryActive.InventoryOnEvent += OnInven;
     }
 
     private IEnumerator Start()
@@ -153,6 +154,7 @@ public class ItemExplain : MonoBehaviour
 
     public void OnInven()
     {
+        Debug.Log("OnInven");
         if (IsInven == true) return;
 
         IsInven = true; 

@@ -78,8 +78,8 @@ public class InventoryActive : MonoBehaviour
 
     private void InitActions()
     {
-        InventoryOnEvent = ShowInven;
-        InventoryOffEvent = ShowUI;
+        InventoryOnEvent += ShowInven;
+        InventoryOffEvent += ShowUI;
         _invenPanel.transform.DOLocalMoveY(_invenY + _moveYValue, 0f);
     }
 
