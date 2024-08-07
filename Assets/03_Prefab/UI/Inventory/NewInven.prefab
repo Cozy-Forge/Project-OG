@@ -1088,8 +1088,8 @@ MonoBehaviour:
     color: {r: 0.7287064, g: 0.30416512, b: 0.8396226, a: 1}
   - Rate: 3
     color: {r: 0.91963935, g: 1, b: 0, a: 1}
-  isDrag: 0
-  useMove: 0
+  IsDrag: 0
+  UseMove: 0
   IsInven: 1
 --- !u!114 &4397255651638157675
 MonoBehaviour:
@@ -1416,23 +1416,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28ba79aa150adc4192c050d91d81be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 1.2
-  easingtime: 0.5
-  ease: 2
-  animCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  images: []
-  canOpen: 1
-  tutoCanOpen: 1
-  isDrag: 0
   _invenPanel: {fileID: 2862155852947883900}
-  _invenInfoPanel: {fileID: 2862155851983045761}
   _synergyPanel: {fileID: 6183605255422197470}
   _components: {fileID: 2862155852850757636}
+  _easingtime: 0.4
+  CanOpen: 1
+  TutoCanOpen: 1
+  IsOn: 0
+  IsDrag: 0
 --- !u!1 &2862155852842895554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,8 +3577,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293388263
-  m_fontColor: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+    rgba: 4282460429
+  m_fontColor: {r: 0.050980397, g: 0.16078432, b: 0.25490198, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
