@@ -48,8 +48,8 @@ public class InventoryActive : MonoBehaviour
 
     private void Awake()
     {
-        InitValue();
         InitComponents();
+        InitValue();
         InitActions();
     }
 
@@ -80,6 +80,7 @@ public class InventoryActive : MonoBehaviour
     {
         InventoryOnEvent = ShowInven;
         InventoryOffEvent = ShowUI;
+        _invenPanel.transform.DOLocalMoveY(_invenY + _moveYValue, 0f);
     }
 
     private void Update()
