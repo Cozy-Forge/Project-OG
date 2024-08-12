@@ -77,7 +77,7 @@ public class FloweringState : BossBaseState
             switch (rand)
             {
                 case 1:
-                    NowCoroutine(_pattern.FlowerShapeShot(_flower, 5, 5, 3, 10, 10, 1, false, 1f));
+                    NowCoroutine(_pattern.FlowerShapeShot(_flower, 5, 5, 3, 10, 6, 1, false, 1f));
                     break;
                 case 2:
                     NowCoroutine(_pattern.ScatterShot(_flower, 5, 3, 2));

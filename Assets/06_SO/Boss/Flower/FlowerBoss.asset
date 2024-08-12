@@ -19,5 +19,5 @@ MonoBehaviour:
   MoveY: 5
   StopTime: 2
   PatternChangeTime: 2
-  MaxHP: 4000
-  Damage: 2.5
+  MaxHP: 3600
+  Damage: 3

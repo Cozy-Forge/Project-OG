@@ -87,7 +87,7 @@ public class WitheredState : BossBaseState
             switch (rand)
             {
                 case 1:
-                    NowCoroutine(_pattern.OminidirShot(_flower, 3, 15, 10, 1, 2));
+                    NowCoroutine(_pattern.OminidirShot(_flower, 3, 15, 6, 1, 2));
                     break;
                 case 2:
                     NowCoroutine(_pattern.WarmShot(_flower, 5, 5, 5, 0.35f, 2));

@@ -61,7 +61,7 @@ public class ATiedState : BossBaseState
 
             _altar.isAttacking = true;
 
-            patternCo = _pattern.OmniGuidPlayerAttack(_altar, 18, 5, 2, 1);
+            patternCo = _pattern.OmniGuidPlayerAttack(_altar, 18, 3, 2, 1);
             NowCoroutine(patternCo);
         }
     }

@@ -68,7 +68,7 @@ public class FDeadState : BossBaseState
         yield return new WaitForSeconds(disappearingTime);
 
         CameraManager.Instance.CameraShake(10, 0.5f);
-        _flower.StartCoroutine(_pattern.FlowerDeadShot(_flower, 5, 7, 1, 10, 5, 0.5f));
+        _flower.StartCoroutine(_pattern.FlowerDeadShot(_flower, 5, 4, 1, 10, 5, 0.5f));
         yield return new WaitForSeconds(0.5f);
 
         _flower.StartCoroutine(ActiveFalse(_flower.smallestBody, disappearingTime));

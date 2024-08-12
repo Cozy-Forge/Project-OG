@@ -70,11 +70,11 @@ public class AFreeState : BossBaseState
             switch (rand)
             {
                 case 1:
-                    NowCoroutine(_pattern.OmniGuidPlayerAttack(_altar, 20, 5, 2, 3));
+                    NowCoroutine(_pattern.OmniGuidPlayerAttack(_altar, 18, 3, 2, 3));
                     break;
                 case 2:
                     _altar.isStop = true;
-                    NowCoroutine(_pattern.Dash(_altar, int.MaxValue, 30, 500, 0.5f, 1f));
+                    NowCoroutine(_pattern.Dash(_altar, int.MaxValue, 25, 500, 0.5f, 1.5f));
                     break;
                 case 3:
                     _altar.isIW = true;

@@ -64,7 +64,7 @@ public class AOneBrokenState : BossBaseState
 
             _altar.isAttacking = true;
 
-            patternCo = _pattern.OmniGuidPlayerAttack(_altar, 20, 5, 2, 2);
+            patternCo = _pattern.OmniGuidPlayerAttack(_altar, 18, 3, 2, 2);
             NowCoroutine(patternCo);
         }
     }
