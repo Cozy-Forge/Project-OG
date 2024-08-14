@@ -11,6 +11,7 @@ using UnityEngine.Analytics;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.VolumeComponent;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -62,10 +63,13 @@ public class QuestManager : MonoSingleton<QuestManager>
     private float curTime;
     private float delayTime;
 
+    private TutorialInventorySetting invenSetting;
+
     private void Awake()
     {
         npcText = GameObject.Find("NPC/talk/NpcText").GetComponent<TextMeshPro>();
         enemy = FindObjectOfType<TutorialEnemyStateController>();
+        invenSetting = FindAnyObjectByType<TutorialInventorySetting>();
     }
 
     private void Start()
@@ -80,7 +84,7 @@ public class QuestManager : MonoSingleton<QuestManager>
     private void Update()
     {
         curTime += Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && npcText.text != "")
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && npcText.text != "")
         {
             isClick = true;
         }
@@ -134,7 +138,7 @@ public class QuestManager : MonoSingleton<QuestManager>
                 curTime = delayTime;
             }
         }
-        if(curTime > delayTime - waitTextTime)
+        if (curTime > delayTime - waitTextTime)
             tutorialManager.textAudio.Stop();
         if (curTime < delayTime)
         {
@@ -166,6 +170,7 @@ public class QuestManager : MonoSingleton<QuestManager>
     {
         StartCoroutine(StartConverSationCo());
     }
+
     IEnumerator StartConverSationCo()
     {
         yield return new WaitForSeconds(2.5f);
@@ -204,7 +209,7 @@ public class QuestManager : MonoSingleton<QuestManager>
             SetStringEmpty();
         }
 
-        npc.DOMoveX(27, 3f);
+        npc.DOMoveX(12, 1f);
         yield return new WaitForSeconds(2f);
         tutorialManager.playerController.canMove = true;
 
@@ -407,7 +412,7 @@ public class QuestManager : MonoSingleton<QuestManager>
         tutorialManager.playerController.Stop();
 
         SetStringEmpty();
-        if(Vector3.Distance(npc.position, player.position) > 12f)
+        if (Vector3.Distance(npc.position, player.position) > 12f)
         {
             tutorialManager.FadeOut(5f);
             player.position = npc.position;
@@ -549,7 +554,7 @@ public class QuestManager : MonoSingleton<QuestManager>
         tutorialManager.inven.TutoCanOpen = false;
 
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             SetString();
 
@@ -727,7 +732,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             SetString();
 
@@ -740,7 +745,6 @@ public class QuestManager : MonoSingleton<QuestManager>
             questIndex++;
         }
 
-        ExpansionManager.Instance.AddTutorial();
         tutorialManager.inven.TutoCanOpen = true;
         tutorialManager.NextQuest();
     }
@@ -751,91 +755,85 @@ public class QuestManager : MonoSingleton<QuestManager>
     }
     IEnumerator ConnectConnecterCo()
     {
+        ExpansionManager.Instance.AddTutorial();
+
         WeaponInventory inven = FindObjectOfType<WeaponInventory>();
         InvenBrick[] invenBricks = FindObjectsOfType<InvenBrick>();
-        Image weapon = null, connecter = null, trigger = null;
+        WeaponBrick drone = null;
+        InvenBrick connector = null;
 
         foreach (var brick in invenBricks)
         {
-            if (brick.Type == ItemType.Generator)
-                trigger = brick.GetComponent<Image>();
-            else if (brick.Type == ItemType.Weapon)
-                weapon = brick.GetComponent<Image>();
-            else if (brick.Type == ItemType.Connector)
-                connecter = brick.GetComponent<Image>();
+            if (drone == null && brick.name == "Drone(Clone)")
+                drone = brick.GetComponent<WeaponBrick>();
+            if (connector == null && brick.name == "Connector2_13_3(Clone)")
+                connector = brick;
         }
+
+        if (drone != null)
+        {
+            drone.weaponController.RemoveWeapon(drone.weaponGuid);
+        }
+        InventoryObjectData InvenObject = drone.InvenObject;
+        if (drone != null)
+        {
+            drone.weaponController.RemoveWeapon(drone.weaponGuid);
+        }
+        inven.RemoveItem(InvenObject, InvenObject.originPos);
+        drone.GetComponent<WeaponBrick>();
+        invenSetting.SettingInven();
+        invenBricks = FindObjectsOfType<InvenBrick>();
+        InvenObject.invenBrick.SettingPosToIndex(3, 0);
 
         //칸확장
         tutorialManager.guideUI2.gameObject.SetActive(true);
         tutorialManager.guideUI2.rectTransform.anchoredPosition = tutorialManager.guide2Pos;
         while (ExpansionManager.Instance.leftCnt > 0)
         {
-            weapon.raycastTarget = false;
-            connecter.raycastTarget = false;
-            trigger.raycastTarget = false;
+            foreach (var brick in invenBricks)
+            {
+                 brick.GetComponent<Image>().raycastTarget = false;
+            }
             yield return null;
         }
         tutorialManager.guideUI2.gameObject.SetActive(false);
 
-        //무기 이동
-        weapon.raycastTarget = true;
-        tutorialManager.guideUI3.gameObject.SetActive(true);
-        while (weapon == null || weapon.GetComponent<InvenBrick>().InvenObject.originPos != new Vector2Int(3, 1))
-        {
-            if (weapon == null)
-            {
-                invenBricks = FindObjectsOfType<InvenBrick>();
-                foreach (var brick in invenBricks)
-                {
-                    if (brick.Type == ItemType.Weapon)
-                        weapon = brick.GetComponent<Image>();
-                }
-            }
-            if (inven.GetContainerItemCnt() == 2)
-                tutorialManager.guideUI3.rectTransform.anchoredPosition = tutorialManager.guide3Pos;
-            else
-                tutorialManager.guideUI3.transform.position = weapon.transform.position;
-
-            connecter.raycastTarget = false;
-            trigger.raycastTarget = false;
-            yield return null;
-        }
-        tutorialManager.guideUI3.gameObject.SetActive(false);
-        
         //부품 이동
-        connecter.raycastTarget = true;
         tutorialManager.guideUI4.gameObject.SetActive(true);
         while (GameObject.Find("LineRenderer(Clone)") == null || GameObject.Find("LineRenderer(Clone)").GetComponent<LineRenderer>().positionCount < 3)
         {
-            if (connecter == null)
+            invenBricks = FindObjectsOfType<InvenBrick>();
+            foreach (var brick in invenBricks)
             {
-                invenBricks = FindObjectsOfType<InvenBrick>();
-                foreach (var brick in invenBricks)
+                if (brick.name == "Connector2_13_3(Clone)")
                 {
-                    if (brick.Type == ItemType.Connector)
-                        connecter = brick.GetComponent<Image>();
+                    connector = brick;
+                    brick.GetComponent<Image>().raycastTarget = true;
                 }
+                else
+                    brick.GetComponent<Image>().raycastTarget = false;
             }
-            if(inven.GetContainerItemCnt() == 2)
-                tutorialManager.guideUI4.rectTransform.anchoredPosition = tutorialManager.guide4Pos;
-            else
-                tutorialManager.guideUI4.transform.position = connecter.transform.position;
 
-            weapon.raycastTarget = false;
-            trigger.raycastTarget = false;
+            if (inven.GetContainerItemCnt() == 8)
+                tutorialManager.guideUI4.rectTransform.anchoredPosition = new Vector3(245, -100);
+            else
+                tutorialManager.guideUI4.transform.position = connector.transform.position;
+
             yield return null;
         }
         tutorialManager.guideUI4.gameObject.SetActive(false);
 
         //닫기
+        invenBricks = FindObjectsOfType<InvenBrick>();
         while (!Input.GetKeyDown(KeyCode.Tab))
         {
-            weapon.raycastTarget = false;
-            connecter.raycastTarget = false;
-            trigger.raycastTarget = false;
+            foreach (var brick in invenBricks)
+            {
+                brick.GetComponent<Image>().raycastTarget = false;
+            }
             yield return null;
         }
-        tutorialManager.inven.TutoCanOpen = false;
+        //tutorialManager.inven.TutoCanOpen = false;
 
         for (int i = 0; i < 2; i++)
         {
@@ -987,4 +985,4 @@ public class QuestManager : MonoSingleton<QuestManager>
         //DataManager.Instance.SaveTutorialData(); 
         SceneManager.LoadScene("Intro");
     }
-} 
+}

@@ -23,9 +23,10 @@ public class WeaponBrick : InvenBrick
     [SerializeField] private InvenWeapon _weaponPrefab;
     public InvenWeapon WeaponPrefab => _weaponPrefab;
 
-    private WeaponController weaponController;
     private InvenWeapon weapon;
-    private Guid weaponGuid;
+    public InvenWeapon Weapon => weapon;
+    public WeaponController weaponController{ get; private set; }
+    public Guid weaponGuid { get; private set; }
 
     protected override void Awake()
     {
@@ -50,7 +51,7 @@ public class WeaponBrick : InvenBrick
     private void HandleWeaponSiganl(object obj)
     {
 
-        if(obj != null)
+        if (obj != null)
             weapon.GetSignal(obj);
 
     }
@@ -63,8 +64,8 @@ public class WeaponBrick : InvenBrick
 
         if (weaponGuid != Guid.Empty)
         {
-            if(weapon != null)
-            Destroy(weapon.gameObject); 
+            if (weapon != null)
+                Destroy(weapon.gameObject);
             weapon = null;
             weaponController.RemoveWeapon(weaponGuid);
 
@@ -77,7 +78,7 @@ public class WeaponBrick : InvenBrick
         if (isHover == true) return;
         isHover = true;
 
-        ItemExplain.Instance.HoverWeapon(invenPoint, image.sprite, GetName(), GetDamage(), GetExplain(), GetOnSkillList(),GetEvaluation());
+        ItemExplain.Instance.HoverWeapon(invenPoint, image.sprite, GetName(), GetDamage(), GetExplain(), GetOnSkillList(), GetEvaluation());
     }
 
     private float GetDamage() => _weaponPrefab.Data.GetDamage();

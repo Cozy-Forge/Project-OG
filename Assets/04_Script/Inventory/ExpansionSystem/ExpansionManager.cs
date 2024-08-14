@@ -184,6 +184,12 @@ public class ExpansionManager : MonoBehaviour
 
         List<Vector2Int> addBlock = new List<Vector2Int>();
 
+        int[] posy = { 0,2,3};
+        for(int i = 0; i < posy.Length; i++)
+        {
+            InvenSlotBtn slot = Instantiate(plusObj, tileParent);
+            slot.TutorialAdd(5,posy[i]);
+        }
 
         Vector2Int pos = new Vector2Int(4, 1);
         for (int i = 0; i < 4; i++)

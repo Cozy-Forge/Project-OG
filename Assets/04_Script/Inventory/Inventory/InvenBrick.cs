@@ -182,6 +182,29 @@ public class InvenBrick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         }
     }
 
+    public void SettingPosToIndex(int x, int y)
+    {
+        var point = new Vector2Int(x, y);
+        InvenPoint = point;
+        var p = new Vector2(x - 2, y - 2);
+        rectTransform.localPosition = p * 100;
+
+        rectTransform.localPosition += new Vector3((rectTransform.rect.width - 100) / 2, (rectTransform.rect.height - 100) / 2);
+
+        if (GameManager.Instance.Inventory.StartWidth % 2 == 0)
+            rectTransform.localPosition += new Vector3(50, 0);
+        if (GameManager.Instance.Inventory.StartHeight % 2 == 0)
+            rectTransform.localPosition += new Vector3(0, 50);
+
+        Setting();
+        inventory.AddItem(InvenObject, point, this);
+
+        Vector2 explainPosition = explainPoint == null
+            ? (Vector2)(rectTransform.position) + explainPos
+            : explainPoint.position;
+        ShowExplain(explainPosition);
+    }
+
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         if (cv.IsRun)
@@ -302,7 +325,7 @@ public class InvenBrick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
                 WeaponExplainManager.generatorExplain[InvenObject.generatorID],
                 itemRate,
                 WeaponExplainManager.generatorName[InvenObject.generatorID],
-                WeaponExplainManager.enforceExplain[InvenObject.generatorID]
+                WeaponExplainManager.generatorName[InvenObject.generatorID]
             );
         }
         else if(Type == ItemType.Connector)
