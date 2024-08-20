@@ -833,7 +833,7 @@ public class QuestManager : MonoSingleton<QuestManager>
             yield return null;
         }
         //tutorialManager.inven.TutoCanOpen = false;
-
+        tutorialManager.inven.TutoCanOpen = false;
         for (int i = 0; i < 2; i++)
         {
             SetString();
