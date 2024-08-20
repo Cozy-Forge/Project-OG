@@ -170,7 +170,6 @@ public class QuestManager : MonoSingleton<QuestManager>
     {
         StartCoroutine(StartConverSationCo());
     }
-
     IEnumerator StartConverSationCo()
     {
         yield return new WaitForSeconds(2.5f);
@@ -936,7 +935,10 @@ public class QuestManager : MonoSingleton<QuestManager>
     {
         tutorialManager.playerController.canMove = true;
         foreach (var enemy in tutorialManager.enemys3)
+        {
+            enemy.GetComponent<CircleCollider2D>().enabled = true;
             enemy.AttackLoop();
+        }
 
         while (tutorialManager.enemys3.Count > 0)
         {
