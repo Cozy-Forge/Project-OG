@@ -36,7 +36,6 @@ namespace Astar
             if (this.GetType() != node.GetType())
                 return false;
 
-            //return node.Pos == Pos;
             return GetHashCode() == node.GetHashCode();
         }
 

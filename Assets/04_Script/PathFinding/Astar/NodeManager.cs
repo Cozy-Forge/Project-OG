@@ -41,7 +41,6 @@ public class NodeManager : MonoBehaviour
     [ContextMenu("BakeMap")]
     public void BakeMap()
     {
-        //Bake(TilemapManager.Instance.MainMap.cellBounds);
         Bake(_mainMap.cellBounds);
     }
 
@@ -74,7 +73,6 @@ public class NodeManager : MonoBehaviour
         
         IsBaking = false;
         
-        //Debug.Log("Bake");
     }
 
     public Task<List<Node>> MakeNode(BoundsInt bounds)
@@ -96,12 +94,9 @@ public class NodeManager : MonoBehaviour
             int obstacleLayer = LayerMask.NameToLayer("Obstacle");
 
             Collider2D collider = Physics2D.OverlapBox(worldPos, size, 0f, (1 << wallLayer) | (1 << obstacleLayer));
-            //Debug.Log(wallLayer);
-            //Debug.Log(obstacleLayer);
-
+         
             if (collider != null)
             {
-                //Debug.Log(collider.gameObject.layer);
                 if (collider.gameObject.layer == wallLayer)
                 {
                     node.Type = NodeType.Locomobile;
@@ -114,8 +109,7 @@ public class NodeManager : MonoBehaviour
                     Obstacle obstacle;
                     if (collider.TryGetComponent<Obstacle>(out obstacle))
                     {
-                        //node.Weight = obstacle.Weight;
-                        node.Weight = 9999;
+                        node.Weight = obstacle.Weight;
                     }
 
                     ObstacleNodes.Add(node);
@@ -128,7 +122,7 @@ public class NodeManager : MonoBehaviour
             }
             nodes.Add(node);
         }
-        //Debug.Log("End");
+
         return Task.FromResult(nodes);
     }
 

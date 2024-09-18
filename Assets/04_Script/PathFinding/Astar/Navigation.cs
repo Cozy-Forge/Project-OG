@@ -7,7 +7,7 @@ namespace Astar
 {
     public class Navigation
     {
-        List<Node> roomNodes; // 맵에 미리 구워놓고 그걸로 판단하려면 얘 살려야함. 나중에 최적화용.
+        List<Node> roomNodes; // 정적인 맵일때 사용하는 Bake 노드.
         List<Node> closeNodes;
         Heap<Node> openNodes;
 
@@ -25,26 +25,13 @@ namespace Astar
 
         public Navigation(Enemy enemy)
         {
-            //this.roomBounds = enemy.RoomInfo.bound;
-
-            //this.conCol = enemy.Collider;
-            //this.conTrm = enemy.transform;
-
-            //this.obstacleLayer = enemy.EnemyDataSO.ObstacleLayer;
-
-
-            //int capacity = enemy.RoomInfo.bound.size.x * enemy.RoomInfo.bound.size.y;
-            //openNodes = new Heap(capacity);
-            //closeNodes = new List<Node>(capacity);
-            //roomNodes = new List<Node>(capacity);
-
-
-            //NodeManager.Instance.BakeStartEvent += BakeStartEvent;
-            //NodeManager.Instance.BakeEndEvent += BakeEndEvent;
+            NodeManager.Instance.BakeStartEvent += BakeStartEvent;
+            NodeManager.Instance.BakeEndEvent += BakeEndEvent;
         }
 
         ~Navigation()
         {
+            NodeManager.Instance.BakeStartEvent -= BakeStartEvent;
             NodeManager.Instance.BakeEndEvent -= BakeEndEvent;
         }
 
@@ -102,9 +89,6 @@ namespace Astar
 
             openNodes.Push(firstNode);
 
-            //FindOpenList(firstNode);
-
-
             bool result = false;
             while (openNodes.Count > 0)
             {
@@ -126,15 +110,8 @@ namespace Astar
                 route.Add(TilemapManager.Instance.GetWorldPos(last.Pos));
                 while (last.Parent != null)
                 {
-                    ////// 노드와 다음 노드 사이에 벽이 없으면 그냥 넣지 않는다
                     Vector3 pos = TilemapManager.Instance.GetWorldPos(last.Pos);
-                    //Vector3 dir = TilemapManager.Instance.GetWorldPos(targetPos) - pos;
-                    //Vector2 size = conCol.bounds.size;
-                    //float angle = Vector3.Angle(targetPos, pos);
-                    //if (!Physics2D.BoxCast(pos, size, angle, dir.normalized, dir.magnitude, obstacleLayer))
-                    {
-                        route.Add(pos);
-                    }
+                    route.Add(pos);
                     last = last.Parent;
                 }
                 route.Add(conTrm.position);
