@@ -151,7 +151,7 @@ public class StageGate : MonoBehaviour, IInteractable
         {
             NextStage.SetType(_gateItemType);
             if (NextStage.ThisStageType == StageType.EnemyStage || NextStage.ThisStageType == StageType.BossStage)
-                GameManager.Instance.isPlay = true;
+                GameManager.Instance.isPlayWave = true;
 
             NextStage.SetStageTitle();
 

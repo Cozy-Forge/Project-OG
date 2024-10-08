@@ -93,7 +93,7 @@ public class InventoryActive : MonoBehaviour
                 
             if (inventoryOpen && _isEndAnimation)
             {
-                if (GameManager.Instance.isPlay)
+                if (GameManager.Instance.isPlayWave)
                 {
                     WarningText();
                     return;

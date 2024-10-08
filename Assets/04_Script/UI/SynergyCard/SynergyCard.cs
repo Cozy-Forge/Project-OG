@@ -82,12 +82,11 @@ public class SynergyCard : MonoBehaviour
         _description.text = cardSO.GetDescription(0);
   
         CurLevel = SynergyManager.Instance.GetSynergyLevel(GetID);
-        //SynergeLevel Á¤º¸ ÃÊ±âÈ­.
+        //SynergeLevel ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­.
         List<int> levelTable = SynergyManager.Instance.GetLevelTable(GetID);
         int levelCount = levelTable.Count;
 
         _synergyLevelInfos = new SynergyLevelInfo[levelCount];
-        Debug.Log($"{GetID} : {levelCount}");
         for(int i = 0; i < _synergyLevelInfos.Count(); i++)
         {
             SynergyLevelInfo temp = Instantiate(synergyInfo.GetSynergeLevelInfoPrefab, _levelTrm);
@@ -121,15 +120,15 @@ public class SynergyCard : MonoBehaviour
         _description.text = _synergyCardSO.GetDescription(percent);
     }
 
-    // card°¡ ´­·ÈÀ» ¶§ ½ÇÇàÇÏ´Â ÀÌº¥Æ®
+    // cardï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ìºï¿½Æ®
     public void FocusOn()
     {
-        //if (IsFocus == true) return; // Áßº¹ ÀÔ·Â ¹æÁö
+        //if (IsFocus == true) return; // ï¿½ßºï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½
         IsFocus = true;
 
         _synergyInfo.SetCurrentSynergyCard(this);
 
-        // °°Àº Æ®¸®°Å¸¦ °¡Áø ¿ÀºêÁ§Æ®¸¸ °¡Á®¿È
+        // ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         GetGeneratorBricks();
 
         BricksOn();
@@ -190,7 +189,7 @@ public class SynergyCard : MonoBehaviour
 
     private void GetGeneratorBricks()
     {
-        // °°Àº Æ®¸®°Å¸¦ °¡Áø ¿ÀºêÁ§Æ®¸¸ °¡Á®¿È
+        // ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         _generatorBricks.Clear();
         _generatorBricks = (from invenBrickData in _weaponInventory.GetContainer()
                             where GetID == GetTrigger(invenBrickData.generatorID)

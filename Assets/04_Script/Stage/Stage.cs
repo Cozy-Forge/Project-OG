@@ -236,7 +236,7 @@ public class Stage : MonoBehaviour
         monsterCount--;
         if(monsterCount <= 0 && isMonsterSpawning == false)
         {
-            GameManager.Instance.isPlay = false;
+            GameManager.Instance.isPlayWave = false;
             
 
             if(_stageType == StageType.BossStage)
@@ -262,7 +262,7 @@ public class Stage : MonoBehaviour
             }
             else
             {
-                GameManager.Instance.isPlay = true;
+                GameManager.Instance.isPlayWave = true;
                 isMonsterSpawning = true;
 
                 StartWave();
@@ -284,7 +284,7 @@ public class Stage : MonoBehaviour
         // appear Gate ...it need tween
         if (_stageType != StageType.EventStage && _stageType != StageType.Shop)
             DeleteStageCameraSetting();
-        GameManager.Instance.isPlay = false;
+        GameManager.Instance.isPlayWave = false;
         if(_stageClearClip != null)
             SoundManager.Instance.SFXPlay("Clear", _stageClearClip, 1f);
 

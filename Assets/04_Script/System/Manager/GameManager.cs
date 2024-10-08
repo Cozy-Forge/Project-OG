@@ -32,8 +32,9 @@ public class GameManager : MonoBehaviour
 
     #region 상태 관련
     [HideInInspector] public bool isShopOpen = false;
-    [HideInInspector] public bool isPlay = false;
+    [HideInInspector] public bool isPlayWave = false;
     [HideInInspector] public bool canControl = true;
+    [HideInInspector] public bool isGamePlay = true;
     #endregion
 
     [NonSerialized] public Transform player;

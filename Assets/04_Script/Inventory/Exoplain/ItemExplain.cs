@@ -154,7 +154,6 @@ public class ItemExplain : MonoBehaviour
 
     public void OnInven()
     {
-        Debug.Log("OnInven");
         if (IsInven == true) return;
 
         IsInven = true; 
