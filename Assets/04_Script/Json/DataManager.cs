@@ -28,7 +28,7 @@ public class DataManager : MonoBehaviour
         #region 예외처리
         if (Instance == null)
         {
-            Instance = FindObjectOfType<DataManager>();
+            Instance = this;
             if(transform.parent == null)
                 DontDestroyOnLoad(this);
         }
