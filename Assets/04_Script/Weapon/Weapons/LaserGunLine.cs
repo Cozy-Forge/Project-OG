@@ -15,7 +15,6 @@ public class LaserGunLine : MonoBehaviour
 
     public void SetLine(Vector2 startPos, Vector2 endPos, float damage, float width = 0.5f)
     {
-
         _lineRenderer.SetPosition(0, startPos);
         _lineRenderer.startWidth = width;
         _lineRenderer.SetPosition(1, endPos);

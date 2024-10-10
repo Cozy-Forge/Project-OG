@@ -31,6 +31,7 @@ public class LaserGun : InvenWeapon
 
         }
         var obj = Instantiate(gunLine, Vector3.zero, Quaternion.identity);
+        Destroy(obj,0.4f);
 
         obj.LineRenderer.positionCount = 2;
         RaycastHit2D hit = Physics2D.Raycast(_shootPos.position, _shootPos.right, int.MaxValue, LayerMask.GetMask("Wall"));

@@ -15,7 +15,7 @@ public class LaserGunClone : RotateClone
         if (!GameManager.Instance.isGamePlay)
             return;
         var obj = Instantiate(gunLine, transform);
-
+        Destroy(obj,0.5f);
         obj.LineRenderer.positionCount = 2;
         
         RaycastHit2D hit = Physics2D.Raycast(_shootPos.position, _shootPos.right, int.MaxValue, LayerMask.GetMask("Wall"));
