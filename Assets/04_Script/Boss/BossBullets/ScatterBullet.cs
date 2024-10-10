@@ -64,6 +64,8 @@ public class ScatterBullet : BossBullet
             {
                 if(ObjectPool.Instance.GetObject(ObjectPoolType.BossBulletType0) != null)
                 {
+                    if(bulletCollector == null)
+                        bulletCollector = GameObject.Find("BulletCollector");
                     GameObject bullet = ObjectPool.Instance.GetObject(ObjectPoolType.BossBulletType0, bulletCollector.transform);
                     bullet.GetComponent<BossBullet>().Attack(damage);
                     bullet.transform.position = transform.position;
