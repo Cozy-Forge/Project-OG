@@ -43,6 +43,9 @@ public class BaseFSM_Controller<T> : FSM_System.FSM_Controller<T> where T : Enum
 
     protected void FixedUpdate()
     {
+        if (GameManager.Instance.canControl == false)
+            return;
+
         FixedUpdateAction?.Invoke();
     }
 
