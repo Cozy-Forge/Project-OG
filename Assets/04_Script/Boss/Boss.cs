@@ -25,7 +25,7 @@ public enum BossState
     Dead
 }
 
-// inspectorø°º≠ ∫∏¿Ã¥¬ ∫ØºˆµÈ
+// inspectorÏóêÏÑú Î≥¥Ïù¥Îäî Î≥ÄÏàòÎì§
 public partial class Boss
 {
     [field: Header("Feedback")]
@@ -65,6 +65,7 @@ public partial class Boss : MonoBehaviour, IHitAble
     }
 
     protected float _currentHP;
+    protected float _maxHp;
 
     protected bool _fakeDie;
 
@@ -76,7 +77,11 @@ public partial class Boss : MonoBehaviour, IHitAble
         _isDie = false;
         isStop = false;
         isDead = false;
-        _currentHP = so.MaxHP;
+        if (BossRushManager.Instance != null)
+            _maxHp = BossRushManager.Instance.GetMaxHp();
+        else
+            _maxHp = so.MaxHP;
+        _currentHP = _maxHp;
         DieEvt += DieEvent;
     }
 
@@ -87,7 +92,7 @@ public partial class Boss : MonoBehaviour, IHitAble
 
     protected virtual void Update()
     {
-        bossHPSlider.value = _currentHP / so.MaxHP;
+        bossHPSlider.value = _currentHP / _maxHp;
     }
 
 
@@ -111,11 +116,11 @@ public partial class Boss : MonoBehaviour, IHitAble
         SetScale(obj, scale, changeTime);
         SetRotation(obj, rotation, changeTime);
 
-        if(chageColor)
+        if (chageColor)
         {
             obj.GetComponent<SpriteRenderer>().color = color;
         }
-        
+
     }
 
     private void SetScale(GameObject obj, Vector3 scale, float changeTime)
@@ -136,7 +141,7 @@ public partial class Boss : MonoBehaviour, IHitAble
     }
     private void DieEvent()
     {
-        if(!_fakeDie)
+        if (!_fakeDie)
         {
             _isDie = true;
         }
@@ -195,15 +200,15 @@ public partial class Boss : MonoBehaviour, IHitAble
         {
             objs[i] = bulletCollector.transform.GetChild(i).gameObject;
         }
-        
-        for(int i = 0; i < childCount; i++)
+
+        for (int i = 0; i < childCount; i++)
         {
             if (objs[i] == null)
                 continue;
             ObjectPool.Instance.ReturnObject(objs[i]);
         }
 
-        if(bulletCollector.transform.childCount > 0)
+        if (bulletCollector.transform.childCount > 0)
         {
             Destroy(bulletCollector.transform.GetChild(0).gameObject);
         }
@@ -211,14 +216,14 @@ public partial class Boss : MonoBehaviour, IHitAble
 
     public IEnumerator RepeatBlinking(int count, GameObject obj, float blinkingTime, float a, int orderInLayer, Color color, Sprite sprite = null, bool willDisappear = false)
     {
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             StartCoroutine(Blinking(obj, blinkingTime, a, orderInLayer, color, sprite, willDisappear));
 
             yield return new WaitForSeconds(blinkingTime * 1.2f);
         }
     }
-    
+
     public IEnumerator Blinking(GameObject obj, float blinkingTime, float a, int orderInLayer, Color color, Sprite sprite = null, bool willDisappear = false)
     {
         SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
@@ -226,7 +231,7 @@ public partial class Boss : MonoBehaviour, IHitAble
         int originOrderInLayer = renderer.sortingOrder;
         float currentTime = 0;
 
-        if(sprite != null)
+        if (sprite != null)
         {
             renderer.sprite = sprite;
         }
@@ -248,7 +253,7 @@ public partial class Boss : MonoBehaviour, IHitAble
             renderer.color *= new Color(1, 1, 1, 0);
         }
         renderer.sortingOrder = originOrderInLayer;
-        if(sprite != null)
+        if (sprite != null)
         {
             renderer.sprite = originSprite;
         }
@@ -261,7 +266,7 @@ public partial class Boss : MonoBehaviour, IHitAble
 
         obj.transform.localScale = originSize * multiply;
 
-        while(currentTime < popingTime)
+        while (currentTime < popingTime)
         {
             if (obj.transform.localScale.magnitude < originSize.magnitude)
             {
@@ -297,7 +302,7 @@ public partial class Boss : MonoBehaviour, IHitAble
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             isBlocked = true;
         }

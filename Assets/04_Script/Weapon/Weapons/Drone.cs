@@ -28,6 +28,8 @@ public class Drone : InvenWeapon
 
     public override void Attack(Transform target)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
 
         var blt = Instantiate(bullet, shootPos.position, transform.rotation);
         blt.Shoot(Data.GetDamage());

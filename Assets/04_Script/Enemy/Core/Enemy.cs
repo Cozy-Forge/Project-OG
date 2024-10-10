@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour, IHitAble
 
     private void FixedUpdate()
     {
-        if(isNotMoveingEnemy || GameManager.Instance.canControl == false)
+        if(isNotMoveingEnemy || GameManager.Instance.isGamePlay == false)
         {
             return;
         }

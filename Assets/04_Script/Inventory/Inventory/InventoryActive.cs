@@ -104,10 +104,12 @@ public class InventoryActive : MonoBehaviour
                 IsOn = !IsOn;
                 if (IsOn)
                 {
+                    GameManager.Instance.isGamePlay = false;
                     InventoryOnEvent?.Invoke();
                 }
                 else
                 {
+                    GameManager.Instance.isGamePlay = true;
                     InventoryOffEvent?.Invoke();
                 }
             }

@@ -8,6 +8,7 @@ public class InfinityModeManager : MonoBehaviour
 
     [SerializeField] MonsterDataManageSO manageData;
     private int wave = 0;
+    public int Wave => wave;
 
     Transform[] spawnPoints;
 
@@ -47,7 +48,7 @@ public class InfinityModeManager : MonoBehaviour
                 randomData = manageData.RandomPick();
             }
             Instantiate(randomData.monster, spawnPoints[Random.Range(0, spawnPoints.Length)]);
-            yield return new WaitForSeconds(Random.Range(0.1f, 0.25f));
+            yield return new WaitForSeconds(Random.Range(0.15f, 0.4f));
         }
     }
 }

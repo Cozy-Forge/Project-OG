@@ -15,6 +15,9 @@ public class EmpClone : RotateClone
 
     public override void Attack(Transform targetTrm)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
+
         transform.DOKill();
         transform.localScale = originScale;
 

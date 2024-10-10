@@ -11,6 +11,9 @@ public class Speaker : InvenWeapon
 
     public override void Attack(Transform target)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
+
         if (_attackSoundClip != null)
         {
 

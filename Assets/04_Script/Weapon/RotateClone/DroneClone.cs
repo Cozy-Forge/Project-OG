@@ -10,6 +10,9 @@ public class DroneClone : RotateClone
 
     public override void Attack(Transform targetTrm)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
+
         var blt = Instantiate(bullet, shootPos.position, transform.rotation);
         blt.Shoot(bullet.Data.Damage);
 

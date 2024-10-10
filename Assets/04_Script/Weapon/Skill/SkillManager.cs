@@ -41,6 +41,9 @@ public class SkillManager : MonoSingleton<SkillManager>
     //트리거 넘어오면 스킬 실행
     public void DetectTrigger(TriggerID id, Weapon weapon = null)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
+
         for (int i = 0; i < _skillList[id].Count; i++)
         {
             if (_skillList[id][i].weapon == null)

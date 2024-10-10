@@ -12,6 +12,8 @@ public class LaserGunClone : RotateClone
 
     public override void Attack(Transform targetTrm)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
         var obj = Instantiate(gunLine, transform);
 
         obj.LineRenderer.positionCount = 2;

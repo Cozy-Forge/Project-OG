@@ -20,6 +20,9 @@ public class EMP : InvenWeapon
 
     public override void Attack(Transform target)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
+
         transform.DOKill();
         transform.localScale = localScale;
 

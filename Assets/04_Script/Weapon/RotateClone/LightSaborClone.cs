@@ -6,6 +6,8 @@ public class LightSaborClone : RotateClone
 {
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
         IHitAble hitAble;
         if (collision.TryGetComponent<IHitAble>(out hitAble))
         {

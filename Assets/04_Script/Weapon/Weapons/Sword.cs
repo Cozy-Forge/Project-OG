@@ -65,6 +65,9 @@ public class Sword : InvenWeapon
 
     public override void Attack(Transform target)
     {
+        if (!GameManager.Instance.isGamePlay)
+            return;
+
         if (isAttack)
         {
             _leftAttack = Mathf.Min(7,_leftAttack + 1);

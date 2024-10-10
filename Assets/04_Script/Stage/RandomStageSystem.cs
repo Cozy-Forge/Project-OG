@@ -23,6 +23,7 @@ public class RandomStageSystem : MonoBehaviour
 
     private Stage _firstStage;
     private int _step = 0;
+    public int step => _step;
     private int _stageInterval = 80;
 
     [SerializeField]
@@ -121,6 +122,9 @@ public class RandomStageSystem : MonoBehaviour
         GameManager.Instance.PlayerTeleport(_firstStage.playerSpawnPos);
         _firstStage.AppearGate();
         lastStage.OnGateEvent += ClearBossStage;
+
+        if (BossRushManager.Instance != null)
+            BossRushManager.Instance.StageClear();
 
     }
 

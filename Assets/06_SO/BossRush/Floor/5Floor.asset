@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac979f90ad91a047b933bab07eca5eb, type: 3}
+  m_Name: 5Floor
+  m_EditorClassIdentifier: 
+  FloorName: Boss Rush
+  FloorTip:
+  - "\uBCF4\uC2A4\uB4E4\uC774 \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
+  FloorPlayerColor: {r: 0, g: 1, b: 0.92549026, a: 1}
+  FloorColor: {r: 0.9960785, g: 0.59607846, b: 0, a: 1}
+  PrintStageInfo: 0400000002000000
+  StartStage: {fileID: 1975566701717600875, guid: 797633edde70a914389ce6c88714ce39, type: 3}
+  EnemySpawnStageList: {fileID: 11400000, guid: 57112d5122c144d4eb79d9918a813c5c, type: 2}
+  EventStageList: {fileID: 11400000, guid: 1836349dd8eed154a9d561c93b9c3fea, type: 2}
+  ShopStage: {fileID: 1975566701717600875, guid: 15b45d4afa3a3e8459673f092eef18c5, type: 3}
+  BossStageList: {fileID: 11400000, guid: 3a588030553ae56409441483e222ae50, type: 2}
+  HealStage: {fileID: 1975566701717600875, guid: def8d100f0843a34aa089947da91370b, type: 3}
