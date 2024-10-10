@@ -24,13 +24,7 @@ public class InfinityModeManager : MonoBehaviour
         spawnPoints = GetComponentsInChildren<Transform>();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.Q))
-        {
-            StartCoroutine(ISpawn());
-        }
-    }
+    public void Spawn() => StartCoroutine(ISpawn());
 
     IEnumerator ISpawn()
     {
