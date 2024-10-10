@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// inspector¿¡¼­ º¸ÀÌ´Â º¯¼öµé
+// inspectorì—ì„œ ì‚¬ìš©í•˜ëŠ” ë³€ìˆ˜ë“¤
 public partial class FlowerBoss
 {
     public GameObject flowerOnlyCollector;
@@ -96,13 +96,13 @@ public partial class FlowerBoss : Boss
         ReturnAll();
         flowering = false;
 
-        while (_currentHP < so.MaxHP)
+        while (_currentHP < _maxHp)
         {
-            _currentHP += so.MaxHP / 50;
+            _currentHP += _maxHp / 50;
             yield return null;
         }
 
-        _currentHP = so.MaxHP;
+        _currentHP = _maxHp;
 
         ChangeBossState(state);
         gameObject.layer = LayerMask.NameToLayer("Boss");

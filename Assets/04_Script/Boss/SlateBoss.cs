@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// inspector¿¡¼­ º¸ÀÌ´Â º¯¼öµé
+// inspectorì—ì„œ ì‚¬ìš©í•˜ëŠ” ë³€ìˆ˜ë“¤
 public partial class SlateBoss
 {
     public GameObject slateOnlyCollector;
@@ -106,7 +106,7 @@ public partial class SlateBoss : Boss
                 }
                 break;
             case BossState.FullHP:
-                if (_currentHP < so.MaxHP / 2)
+                if (_currentHP < _maxHp / 2)
                 {
                     ChangeBossState(BossState.HalfHP);
                 }

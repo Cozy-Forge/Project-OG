@@ -62,11 +62,14 @@ public class ScatterBullet : BossBullet
 
             for (int j = 0; j < 2; j++)
             {
-                GameObject bullet = ObjectPool.Instance.GetObject(ObjectPoolType.BossBulletType0, bulletCollector.transform);
-                bullet.GetComponent<BossBullet>().Attack(damage);
-                bullet.transform.position = transform.position;
-                bullet.transform.rotation = Quaternion.identity;
-                rigids[j] = bullet.GetComponent<Rigidbody2D>();
+                if(ObjectPool.Instance.GetObject(ObjectPoolType.BossBulletType0) != null)
+                {
+                    GameObject bullet = ObjectPool.Instance.GetObject(ObjectPoolType.BossBulletType0, bulletCollector.transform);
+                    bullet.GetComponent<BossBullet>().Attack(damage);
+                    bullet.transform.position = transform.position;
+                    bullet.transform.rotation = Quaternion.identity;
+                    rigids[j] = bullet.GetComponent<Rigidbody2D>();
+                }
             }
 
             rigids[0].velocity = Quaternion.Euler(0, 0, angle) * rigid.velocity.normalized * speed;

@@ -93,10 +93,15 @@ public class ExpansionManager : MonoBehaviour
 
     public void DeleteChild()
     {
-        foreach (Transform child in tileParent.GetComponentInChildren<Transform>())
+        Transform[] children = tileParent.GetComponentsInChildren<Transform>();
+
+        foreach (Transform child in children)
         {
-            Destroy(child.gameObject);
+            if(child != tileParent)
+                Destroy(child.gameObject);
         }
+
+
     }
 
     public void AddChild()

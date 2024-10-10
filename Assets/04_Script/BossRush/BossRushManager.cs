@@ -33,12 +33,18 @@ public class BossRushManager : MonoBehaviour
 
     private void AddMoney()
     {
-        Money.Instance.EarnGold(300 + stageSystem.step * 50);
+        if (stageSystem.step == 0)
+            Money.Instance.EarnGold(50);
+        else
+        {
+            Money.Instance.EarnGold(150);
+        }
     }
 
     private void ExpansionInventory()
     {
-        ExpansionManager.Instance.AddSlotcnt(5 + stageSystem.step * 1);
+        if(stageSystem.step == 0)
+            ExpansionManager.Instance.AddSlotcnt(5);
     }
 
     public float GetMaxHp()

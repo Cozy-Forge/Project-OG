@@ -300,7 +300,7 @@ public class AltarPattern : BossPatternBase
 
 
 
-    //// ÇÃ·¹ÀÌ¾î ¹æÇâÀ¸·Î ¿¡³ÊÁö º¼À» ´øÁø´Ù - ÇÃ·¹ÀÌ¾î°¡ ±ÙÁ¢ÇÏ±â ÁÁÀº ÆÐÅÏ
+    //// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //public IEnumerator ThrowEnergyBall(AltarBoss boss, int burstCount, float speed, float waitTime, float returnTime)
     //{
     //    float animTime = 0.5f;
@@ -339,7 +339,7 @@ public class AltarPattern : BossPatternBase
     //}
 
     //private bool rotate = true;
-    //// ÃÑ¾ËÀ» Àü ¹æÇâÀ¸·Î ³­»çÇÑ´Ù - ÇÃ·¹ÀÌ¾î°¡ ¸Ö¾îÁ®¾ß ÁÁÀº ÆÐÅÏ
+    //// ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ - ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //public IEnumerator OmnidirShooting(AltarBoss boss, int bulletCount, float speed, float time, int turnCount)
     //{
     //    rotate = true;
