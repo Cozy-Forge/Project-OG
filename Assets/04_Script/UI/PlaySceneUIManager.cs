@@ -65,7 +65,7 @@ public class PlaySceneUIManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         PlayEFF();
-        SceneManager.LoadScene("Play");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MainMenuBtn()
