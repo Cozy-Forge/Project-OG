@@ -15,12 +15,15 @@ EditorBuildSettings:
     path: Assets/02_Scene/BuildScene/Tutorial.unity
     guid: bc8eb78e4f0c1864595e0ea9307853e0
   - enabled: 1
+    path: Assets/02_Scene/BuildScene/BossRush.unity
+    guid: 167936440f481f24f9a3ef1b3154c76b
+  - enabled: 0
     path: Assets/02_Scene/BuildScene/Play.unity
     guid: 8a4031b9ababc6d4aa509182e1dd1cab
-  - enabled: 1
+  - enabled: 0
     path: Assets/02_Scene/BuildScene/UserTest.unity
     guid: 972199817d82fd74facdb5600a136d43
-  - enabled: 1
+  - enabled: 0
     path: Assets/02_Scene/BuildScene/Lobby.unity
     guid: d6b709c7ea805f84eb8f896b4622b1f9
   - enabled: 1

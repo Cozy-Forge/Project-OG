@@ -9,6 +9,7 @@ public class IntroUIManager : MonoBehaviour
     [SerializeField] GameObject _settingPanel;
     [SerializeField] GameObject _controlPanel;
     [SerializeField] GameObject _audioPanel;
+    [SerializeField] GameObject _modePanel;
 
     [Header("오디오")]
     [SerializeField] AudioClip _btnClick;
@@ -36,6 +37,12 @@ public class IntroUIManager : MonoBehaviour
     {
         BtnSound();
         _audioPanel.SetActive(!_audioPanel.activeSelf);
+    }
+
+    public void ModeBtn()
+    {
+        BtnSound();
+        _modePanel.SetActive(!_modePanel.activeSelf);
     }
 
     public void QuitBtn()
