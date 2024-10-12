@@ -26,6 +26,8 @@ public class FocusTweening : MonoBehaviour
     FocusImageInfo focusImageInfo;
     Image backgroundImage;
 
+    Sequence sequence;
+
     private void Awake()
     {
         RectTransform focusImgTrm = transform.Find("BG/FocusImg").GetComponent<RectTransform>();
@@ -43,6 +45,12 @@ public class FocusTweening : MonoBehaviour
 
     public void FocusOn()
     {
+        //if(sequence != null)
+        //{
+        //    sequence.Kill();
+        //}
+        //sequence = DOTween.Sequence();
+
         focusImageInfo.RectTransform.DOAnchorPos(focusImageInfo.BaseLocalPos + moveValue, duration);
         focusImageInfo.Image.DOColor(FocusColor, duration);
       
@@ -51,6 +59,8 @@ public class FocusTweening : MonoBehaviour
 
     public void FocusOff()
     {
+        //DOTween.KillAll();
+
         focusImageInfo.RectTransform.DOAnchorPos(focusImageInfo.BaseLocalPos, 0f);
         focusImageInfo.Image.DOColor(focusImageInfo.BaseColor, duration);
        

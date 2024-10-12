@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 20437725}
   - component: {fileID: 20437727}
   - component: {fileID: 20437726}
-  - component: {fileID: 20437728}
   m_Layer: 5
   m_Name: FocusImg
   m_TagString: Untagged
@@ -200,34 +199,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20437724}
   m_CullTransparentMesh: 1
---- !u!114 &20437728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20437724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 198542904b90b4a40b13a8534a00f48a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tweeningScript: {fileID: 1792100947}
-  ClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1820449263}
-        m_TargetAssemblyTypeName: IntroUIManager, Assembly-CSharp
-        m_MethodName: StartBtn
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Tutorial
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &44958169
 GameObject:
   m_ObjectHideFlags: 0
@@ -4250,7 +4221,6 @@ GameObject:
   - component: {fileID: 784517969}
   - component: {fileID: 784517971}
   - component: {fileID: 784517970}
-  - component: {fileID: 784517972}
   m_Layer: 5
   m_Name: FocusImg
   m_TagString: Untagged
@@ -4316,34 +4286,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784517968}
   m_CullTransparentMesh: 1
---- !u!114 &784517972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784517968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 198542904b90b4a40b13a8534a00f48a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tweeningScript: {fileID: 1691260252}
-  ClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1820449263}
-        m_TargetAssemblyTypeName: IntroUIManager, Assembly-CSharp
-        m_MethodName: StartBtn
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: BossRush
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &788737002
 GameObject:
   m_ObjectHideFlags: 0
@@ -5120,6 +5062,7 @@ GameObject:
   - component: {fileID: 990287116}
   - component: {fileID: 990287118}
   - component: {fileID: 990287117}
+  - component: {fileID: 990287119}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -5187,6 +5130,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990287115}
   m_CullTransparentMesh: 1
+--- !u!114 &990287119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990287115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198542904b90b4a40b13a8534a00f48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tweeningScript: {fileID: 1792100947}
+  ClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1820449263}
+        m_TargetAssemblyTypeName: IntroUIManager, Assembly-CSharp
+        m_MethodName: StartBtn
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Tutorial
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1037235974
 GameObject:
   m_ObjectHideFlags: 0
@@ -10651,6 +10622,7 @@ GameObject:
   - component: {fileID: 2050411580}
   - component: {fileID: 2050411582}
   - component: {fileID: 2050411581}
+  - component: {fileID: 2050411583}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -10718,6 +10690,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050411579}
   m_CullTransparentMesh: 1
+--- !u!114 &2050411583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050411579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198542904b90b4a40b13a8534a00f48a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tweeningScript: {fileID: 1691260252}
+  ClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1820449263}
+        m_TargetAssemblyTypeName: IntroUIManager, Assembly-CSharp
+        m_MethodName: StartBtn
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BossRush
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2052508953
 GameObject:
   m_ObjectHideFlags: 0
