@@ -129,5 +129,6 @@ MonoBehaviour:
   origin: {fileID: 7875682921278912687, guid: 6b93f55222b957e4f99b80c41f0958f4, type: 3}
   <InvenObject>k__BackingField: {fileID: 11400000, guid: 2b6b19e20c4ee10428be09d76db33558, type: 2}
   prevPos: {x: 0, y: 0, z: 0}
+  sizeType: 9
   Type: 2
   itemRate: 0

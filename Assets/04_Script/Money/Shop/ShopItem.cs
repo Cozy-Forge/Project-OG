@@ -173,11 +173,8 @@ public class ShopItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         //
-        if (_item.Brick.Type == ItemType.Connector
-            || _isSold)
+        if (_isSold)
             return;
-
-        Debug.Log($"Enter {_item.Brick.Type}");
 
         _shop.ShopItemInfoUI.SetPos(transform.position);
         _shop.ShopItemInfoUI.SetInfo(_item);
@@ -187,11 +184,8 @@ public class ShopItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (_item.Brick.Type == ItemType.Connector
-            || _isSold)
+        if (_isSold)
             return;
-
-        Debug.Log($"Exit {_item.Brick.Type}");
 
         _shop.ShopItemInfoUI.SetEnableUI(false);
         
