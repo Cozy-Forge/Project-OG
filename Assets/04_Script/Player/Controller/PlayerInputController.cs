@@ -173,9 +173,8 @@ public class PlayerInputController : IDisposable
         {
             IngameUIManager.Instance.IngameTooltip.SetInfo(_detectItem);
         }
-        else if (_interactObject.TryGetComponent<Item>(out Item item) && item.Brick.Type != ItemType.Connector)
+        else if (_interactObject.TryGetComponent<Item>(out Item item))
         {
-
             _detectItem = item;
             IngameUIManager.Instance.IngameTooltip.SetInfo(item);
             _isDetectItem = true;

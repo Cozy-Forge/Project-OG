@@ -21,7 +21,7 @@ public class InvenBrick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public Vector2 InvenPoint { get; set; }
 
     public Vector3 prevPos;
-
+    public BlockSize sizeType = BlockSize.None;
     protected WeaponInventory inventory;
     protected InventoryActive inventoryActive;
     protected ConnectVisible cv;

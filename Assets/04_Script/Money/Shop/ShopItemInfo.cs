@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ public class ShopItemInfo : MonoBehaviour
     private TextMeshProUGUI _itemValue;
     [SerializeField]
     private TextMeshProUGUI _itemExplain;
+    [SerializeField]
+    private SizeTooltip _itemSizeTooltip;
 
     public void SetPos(Vector3 worldPos)
     {
@@ -32,6 +35,8 @@ public class ShopItemInfo : MonoBehaviour
 
         InvenBrick brick = itemInfoSO.Brick;
 
+        _itemSizeTooltip.FillBlock(brick.sizeType);
+
         switch (brick.Type)
         {
             case ItemType.Weapon:
@@ -41,6 +46,7 @@ public class ShopItemInfo : MonoBehaviour
                 SetGeneratorInfo(brick);
                 break;
             case ItemType.Connector:
+                SetConnectorInfo(brick);
                 break;
         }
 
@@ -70,7 +76,7 @@ public class ShopItemInfo : MonoBehaviour
             _itemName.text = nameText;
 
             WeaponDataSO weaponData = weaponBrick.WeaponPrefab.Data;
-            string valueText = $"���ݷ� {weaponData.AttackDamage.GetValue()}, ���ݼӵ� {weaponData.AttackCoolDown.GetValue()}";
+            string valueText = $"공격력 {weaponData.AttackDamage.GetValue()}, 공격속도 {weaponData.AttackCoolDown.GetValue()}";
 
             _itemValue.text = valueText;
 
@@ -94,4 +100,10 @@ public class ShopItemInfo : MonoBehaviour
         _itemExplain.text = WeaponExplainManager.generatorExplain[id];
     }
 
+    private void SetConnectorInfo(InvenBrick brick)
+    {
+        _itemName.text = "연결기";
+        _itemValue.text = "";
+        _itemExplain.text = "무기와 생성기를 연결시킵니다.";
+    }
 }

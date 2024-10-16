@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class IngameTooltip : MonoBehaviour
     TextMeshProUGUI _nameText;
     TextMeshProUGUI _rateText;
     TextMeshProUGUI _explainText;
+    [SerializeField]SizeTooltip     _sizeTooltip;
 
     Item _lastItem = null;
     bool _isOn = false;
@@ -27,7 +29,6 @@ public class IngameTooltip : MonoBehaviour
         _nameText = transform.Find("Name").GetComponent<TextMeshProUGUI>();
         _rateText = transform.Find("Rate").GetComponent<TextMeshProUGUI>();
         _explainText = transform.Find("Explain").GetComponent<TextMeshProUGUI>();
-
     }
 
     public void SetInfo(Item item)
@@ -44,7 +45,7 @@ public class IngameTooltip : MonoBehaviour
         InvenBrick brick = item.Brick;
 
         // check
-        if (brick == null || brick.Type == ItemType.Connector)
+        if (brick == null)
             return;
 
         // Save Info
@@ -57,6 +58,7 @@ public class IngameTooltip : MonoBehaviour
         SetPos(item.UIPos);
 
         // Set Info
+        _sizeTooltip.FillBlock(brick.sizeType);
         switch (brick.Type)
         {
             case ItemType.Weapon:
@@ -68,6 +70,8 @@ public class IngameTooltip : MonoBehaviour
                 SetColor(brick.ItemRate);
                 break;
             case ItemType.Connector:
+                SetConnectorInfo();
+                SetColor(ItemRate.NORMAL);
                 break;
         }
 
@@ -78,7 +82,7 @@ public class IngameTooltip : MonoBehaviour
     private void SetOnOff(bool isOn)
     {
         _isOn = isOn;
-
+        _sizeTooltip.ONOFF(isOn);
         _backgroundImage.enabled    = isOn;
         _nameText.enabled           = isOn;
         _rateText.enabled           = isOn;
@@ -127,6 +131,13 @@ public class IngameTooltip : MonoBehaviour
         _nameText.text = nameText;
         _rateText.text = rateText;
         _explainText.text = explainText;
+    }
+
+    private void SetConnectorInfo()
+    {
+        _nameText.text = "연결기";
+        _rateText.text = "";
+        _explainText.text = "무기와 생성기를 연결시킵니다.";
     }
 
     public void OffInfo()

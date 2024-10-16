@@ -93,6 +93,7 @@ MonoBehaviour:
   origin: {fileID: 3722052601859859702, guid: 3441681efcbd3494cba7a4296eceba59, type: 3}
   <InvenObject>k__BackingField: {fileID: 11400000, guid: 200e7a09bd1a5fc4f8f1f7ca59c58e65, type: 2}
   prevPos: {x: 0, y: 0, z: 0}
+  sizeType: 1
   Type: 0
   itemRate: 1
   _weaponPrefab: {fileID: 1952366023978310534, guid: 8ae7bbb93722f1f4293f23f3a4991cd5, type: 3}
